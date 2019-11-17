@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test task</title>
+    https://codepen.io/T_any_a/pen/qBBQGWB
+</head>
+<body>
+    <a href="https://www.google.ru/">Fake link</a>
+    <script>
+        let ref = document.querySelector('a');
+        let actualRef = "https://www.google.ru/";
+        let fakeRef = "https://www.vk.com/";
+        let count = localStorage.getItem('count')|| 0;
+
+        let setFakeLink = (e)=>{
+            e.preventDefault();
+            count++;
+            localStorage.setItem('count',  count);
+            document.cookie = `count=${count}`
+            window.open(fakeRef);
+            window.open(actualRef,'_blank');
+
+        }   
+        ref.addEventListener('click', setFakeLink)       
+    </script>
+</body>
+</html>
