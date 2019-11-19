@@ -8,22 +8,24 @@ export default new Vuex.Store({
     driverCat: '12211',
   },
   mutations: {
-    changeValue (state, payload) {  
-      state.driverCat = ''
+    changeValue (state, payload) {
+       
+      let newCat   = ''
       let items = payload.items
-      let value = payload.value
+      let value = payload.value    
       for(let i = 0; i< items.length; i++){
         if(value.indexOf(items[i]) != -1){
-          state.driverCat += '2'
+          newCat += '2'
         }
         else{
-          state.driverCat += '1'
+          newCat += '1'
         }
-      }
+      }  
+      state.driverCat = newCat    
     }
   },
   actions: {
-    changeValue({commit}, payload){         
+    changeValue({commit}, payload){  
       commit('changeValue', payload)
     }
   },

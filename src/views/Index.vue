@@ -1,14 +1,12 @@
-<template>
-    <v-container fluid grid-list-xl>
-        <v-layout wrap align-center>
-            <v-flex xs12 sm6>
-              <MySelect
-                :items="items"
-                />
-               <span>driverCat: {{driverCat}}</span>
-            </v-flex>            
-        </v-layout>
-    </v-container>
+<template> 
+  <v-app>
+    <MySelect
+      :items="items"
+      :value="value"
+      @changevalue="onchangeValue"
+    />
+    <span>driverCat: {{driverCat}}</span>    
+  </v-app>
 </template>
 <script>
 // @ is an alias to /src
@@ -21,7 +19,7 @@ export default {
   },
    data: () => ({
     items: ['A', 'B', 'C', 'D', 'E'],    
-   // value: [],    
+    value: [],    
   }),
   computed:{    
     driverCat (){     
@@ -29,20 +27,20 @@ export default {
     }
   },
   mounted(){   
-    /*for(let i = 0; i< this.driverCat.length; i++){
+    for(let i = 0; i< this.driverCat.length; i++){
       if(this.driverCat[i] == 2){
         this.value.push(this.items[i])
       }
-    };*/
+    }
   },  
-  watch: {
-    /*value: function () {
-    let payload = {
-      value:this.value,
+  methods:{
+    onchangeValue(data){      
+      let payload = {
+      value:data,
       items:this.items  
-    }       
-    this.$store.dispatch('changeValue', payload)
-    } */  
-  } 
+    } 
+      this.$store.dispatch('changeValue', payload)
+    }
+  }
 }
 </script>
